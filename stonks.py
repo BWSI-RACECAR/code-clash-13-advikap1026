@@ -14,11 +14,21 @@ class Solution:
             highInd = lowIndex
             for i in range(lowIndex, len(prices)):
                  if prices[i] > highest:
-                   
-                      highest = prices[i]
-                      highInd = i 
+                      if prices[i]> lowest: 
+                        highest = prices[i]
+                        highInd = i 
             profit = highest - lowest
             return profit 
+
+            highestProfit = 0 
+            for i in range(len(prices)):
+                 lowInd = i 
+                 lower = prices[i]
+                 for j in range(i, len(prices)):
+                      highInd = j 
+                      higher = prices[j]
+                      firstProfit = higher - lower 
+                
                  
             
             pass
