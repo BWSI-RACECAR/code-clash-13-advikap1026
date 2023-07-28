@@ -5,31 +5,48 @@ class Solution:
             
             #TODO: Write code below to returnn an int with the solution to the prompt.
             print(prices)
-            lowest = prices[0]
-            lowIndex = 0 
-            for i in range(len(prices)): 
-                 if prices[i] < lowest: 
-                      lowest = prices[i]
-                      lowIndex = i 
-            highest = prices[lowIndex]
-            highInd = lowIndex
-            for i in range(lowIndex, len(prices)):
-                 if prices[i] > highest:
-                      if prices[i]> lowest: 
-                        highest = prices[i]
-                        highInd = i 
-            profit = highest - lowest
-            return profit 
+            # lowest = prices[0]
+            # lowIndex = 0 
+            # for i in range(len(prices)): 
+            #      if prices[i] < lowest: 
+            #           lowest = prices[i]
+            #           lowIndex = i 
+            # highest = prices[lowIndex]
+            # highInd = lowIndex
+            # for i in range(lowIndex, len(prices)):
+            #      if prices[i] > highest:
+            #           if prices[i]> lowest: 
+            #             highest = prices[i]
+            #             highInd = i 
+            # profit = highest - lowest
+            # return profit 
 
             highestProfit = 0 
+            firstProfit = 0 
+            secondProfit = 0 
             for i in range(len(prices)):
                  lowInd = i 
                  lower = prices[i]
                  for j in range(i, len(prices)):
-                      highInd = j 
-                      higher = prices[j]
-                      firstProfit = higher - lower 
-                
+                    highInd = j 
+                    higher = prices[j]
+                    if higher > lower: 
+                        firstProfit = higher - lower 
+                    else: 
+                        continue
+                    
+                    for k in range(j, len(prices)):
+                        secondLowInd = k 
+                        secondLow = prices[k]
+                        for l in range(k, len(prices)):
+                            if prices[l] > secondLow: 
+                                secondProfit = prices[l] - secondLow 
+                 profit = secondProfit + firstProfit
+                 if profit >highestProfit:
+                    highestProfit = profit 
+            return highestProfit
+                    
+                        
                  
             
             pass
