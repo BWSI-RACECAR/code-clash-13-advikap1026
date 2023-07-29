@@ -21,32 +21,44 @@ class Solution:
             # profit = highest - lowest
             # return profit 
 
-            highestProfit = 0 
-            firstProfit = 0 
-            secondProfit = 0 
-            for i in range(len(prices)):
-                 lowInd = i 
-                 lower = prices[i]
-                 for j in range(i, len(prices)):
-                    highInd = j 
-                    higher = prices[j]
-                    if higher > lower: 
-                        firstProfit = higher - lower 
-                    else: 
-                        continue
+            # highestProfit = 0 
+            # firstProfit = 0 
+            # secondProfit = 0 
+            # for i in range(len(prices)):
+            #      lowInd = i 
+            #      lower = prices[i]
+            #      for j in range(i, len(prices)):
+            #         highInd = j 
+            #         higher = prices[j]
+            #         if higher > lower: 
+            #             firstProfit = higher - lower 
+            #         else: 
+            #             continue
                     
-                    for k in range(j, len(prices)):
-                        secondLowInd = k 
-                        secondLow = prices[k]
-                        for l in range(k, len(prices)):
-                            if prices[l] > secondLow: 
-                                secondProfit = prices[l] - secondLow 
-                 profit = secondProfit + firstProfit
-                 if profit >highestProfit:
-                    highestProfit = profit 
-            return highestProfit
+            #         for k in range(j, len(prices)):
+            #             secondLowInd = k 
+            #             secondLow = prices[k]
+            #             for l in range(k, len(prices)):
+            #                 secondHigh = prices[l]
+            #                 if secondHigh > secondLow: 
+            #                     secondProfit = secondHigh - secondLow 
+            #      profit = secondProfit + firstProfit
+            #      if profit >highestProfit:
+            #         highestProfit = profit 
+            # return highestProfit
                     
-                        
+            length = len(prices)
+            if length == 0:
+                return 0
+            max_profit, low = 0, prices[0]
+            for i in range(1, length):
+                if low > prices[i]:
+                    low = prices[i]
+                else:
+                    temp = prices[i] - low
+                    if temp > max_profit:
+                        max_profit = temp
+            return max_profit
                  
             
             pass
