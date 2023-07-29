@@ -47,19 +47,29 @@ class Solution:
             #         highestProfit = profit 
             # return highestProfit
                     
-            length = len(prices)
-            if length == 0:
-                return 0
-            max_profit, low = 0, prices[0]
-            for i in range(1, length):
-                if low > prices[i]:
-                    low = prices[i]
-                else:
-                    temp = prices[i] - low
-                    if temp > max_profit:
-                        max_profit = temp
-            return max_profit
+            # length = len(prices)
+            # if length == 0:
+            #     return 0
+            # max_profit, low = 0, prices[0]
+            # for i in range(1, length):
+            #     if low > prices[i]:
+            #         low = prices[i]
+            #     else:
+            #         temp = prices[i] - low
+            #         if temp > max_profit:
+            #             max_profit = temp
+            # return max_profit
                  
+            buy1 = buy2 = float('-inf')
+            sell1 = sell2 = 0
+
+            for price in prices:
+                buy1 = max(buy1, -price)
+                sell1 = max(sell1, buy1 + price)
+                buy2 = max(buy2, sell1 - price)
+                sell2 = max(sell2, buy2 + price)
+
+            return sell2
             
             pass
 
